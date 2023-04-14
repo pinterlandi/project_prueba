@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<dataTemplate name="XXSC_MP72_ALERT_SASO_CAT" defaultPackage="XXSC_MP72_ALERT_SASO_CAT_PKG" version="1.0">
+	<properties>
+		<property name="debug_mode" value="on"/>
+	</properties>
+	<dataQuery>
+		<sqlStatement name="Q_OUT_PUT">
+            <![CDATA[ 
+				  SELECT CONTROLLO_CATEGORIA_SASO,
+						 AZIONE_RICHIESTA,
+						 CODICE_SASO,
+						 WEBADI_TIPO_TRANSAZIONE,
+						 WEBADI_CODICE_ORGANIZZAZIONE,
+						 WEBADI_ARTICOLO,
+						 WEBADI_CATALOGO,
+						 WEBADI_CATEGORIA,
+						 WEBADI_CATEGORIA_PRECEDENTE,
+						 MP72_BRAND,
+						 MP72_BRAND_DESC,
+						 MP72_EN87,
+						 MP72_EN87_DESC,
+						 MP72_DIMENSION_CODE,
+						 MP72_RECTIFIED,
+						 MP72_PROCESSING_TYPE_RULE,
+						 SASO_ORG_CODE,
+						 ITEM_CODE,
+						 DESCRIPTION,
+						 LONG_DESCRIPTION,
+						 ITEM_TYPE_DESC,
+						 ITEM_STATUS_CODE_TL
+					FROM APPS.XXSC_MP72_ALERT_SASO_TMP X
+				ORDER BY x.ITEM_CODE DESC
+				]]></sqlStatement>
+	</dataQuery>
+	<dataTrigger name="beforeReportTrigger" source="XXSC_MP72_ALERT_SASO_CAT_PKG.BeforeReport()"/>
+	<dataStructure>	
+	<group name="G_OUT_PUT" source="Q_OUT_PUT">
+		<element name="CONTROLLO_CATEGORIA_SASO" value="CONTROLLO_CATEGORIA_SASO"/>
+		<element name="AZIONE_RICHIESTA" value="AZIONE_RICHIESTA"/>
+		<element name="CODICE_SASO" value="CODICE_SASO"/>
+		<element name="WEBADI_TIPO_TRANSAZIONE" value="WEBADI_TIPO_TRANSAZIONE"/>
+		<element name="WEBADI_CODICE_ORGANIZZAZIONE" value="WEBADI_CODICE_ORGANIZZAZIONE"/>
+		<element name="WEBADI_ARTICOLO" value="WEBADI_ARTICOLO"/>
+		<element name="WEBADI_CATALOGO" value="WEBADI_CATALOGO"/>
+		<element name="WEBADI_CATEGORIA" value="WEBADI_CATEGORIA"/>
+		<element name="WEBADI_CATEGORIA_PRECEDENTE" value="WEBADI_CATEGORIA_PRECEDENTE"/>
+		<element name="MP72_BRAND" value="MP72_BRAND"/>
+		<element name="MP72_BRAND_DESC" value="MP72_BRAND_DESC"/>
+		<element name="MP72_EN87" value="MP72_EN87"/>
+		<element name="MP72_EN87_DESC" value="MP72_EN87_DESC"/>
+		<element name="MP72_DIMENSION_CODE" value="MP72_DIMENSION_CODE"/>
+		<element name="MP72_RECTIFIED" value="MP72_RECTIFIED"/>
+		<element name="MP72_PROCESSING_TYPE_RULE" value="MP72_PROCESSING_TYPE_RULE"/>
+		<element name="SASO_ORG_CODE" value="SASO_ORG_CODE"/>
+		<element name="ITEM_CODE" value="ITEM_CODE"/>
+		<element name="DESCRIPTION" value="DESCRIPTION"/>
+		<element name="LONG_DESCRIPTION" value="LONG_DESCRIPTION"/>
+		<element name="ITEM_TYPE_DESC" value="ITEM_TYPE_DESC"/>
+		<element name="ITEM_STATUS_CODE_TL" value="ITEM_STATUS_CODE_TL"/>
+	</group>
+	</dataStructure>
+	<dataTrigger name="afterReportTrigger" source="XXSC_MP72_ALERT_SASO_CAT_PKG.AfterReport()"/>
+</dataTemplate>
+
